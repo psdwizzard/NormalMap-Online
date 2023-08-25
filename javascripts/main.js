@@ -374,13 +374,15 @@ var NMO_Main = new function(){
 			context.drawImage(NMO_SpecularMap.specular_canvas,0,0);
 			file_name="SpecularMap";
 		}
-		
+		var image_type_name = file_name;
 		if (document.getElementById('file_name').value != "")
-			file_name = document.getElementById('file_name').value;
-		
+			file_name = document.getElementById('file_name').value + "_" + image_type_name;
+		else
+			file_name = image_type_name;
 		
 			
 		var qual = $('#file_jpg_qual_nmb').val() / 100;
+
 		if (file_type == "tiff"){
 			CanvasToTIFF.toBlob(canvas, function(blob) {
    				saveAs(blob, file_name + ".tif");
